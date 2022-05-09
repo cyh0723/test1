@@ -16,4 +16,11 @@ public class UserController {
     public void findAll() throws SQLException {
         System.out.println(userService.findAll());
     }
+
+    public void findById(int id) throws SQLException {
+
+
+        System.out.println(userService.findById(id));
+
+    }
 }

@@ -18,8 +18,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findById(Integer id) {
-        return null;
+    public User findById(Integer id) throws SQLException {
+
+        return userDao.findById(id);
     }
 
     @Override

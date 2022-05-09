@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDao {
     List<User> findAll() throws SQLException;
 
-    User findById(Integer id);
+    User findById(Integer id) throws SQLException;
 
     int insert(User user);
 

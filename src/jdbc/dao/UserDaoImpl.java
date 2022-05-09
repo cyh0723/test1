@@ -25,8 +25,22 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User findById(Integer id) {
-        return null;
+    public User findById(Integer id) throws SQLException {
+        User user=new User();
+        Connection conn = DriverManager.getConnection("jdbc:mysql://sh-cynosdbmysql-grp-10kn1b4i.sql.tencentcdb.com:27594/test", "cyh", "Cyh_990723");
+        Statement stat = conn.createStatement();
+        String sql="SELECT * from `user` where id ='"+id+"'";
+        ResultSet rs = stat.executeQuery(sql);
+        while (rs.next()){
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setAge(rs.getInt("age"));
+
+        }
+        conn.close();
+        stat.close();
+        rs.close();
+        return user;
     }
 
     @Override
