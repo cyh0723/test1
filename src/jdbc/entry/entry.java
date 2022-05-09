@@ -19,9 +19,14 @@ public class entry {
         Scanner in =new Scanner(System.in);
         int id = in.nextInt();
 
-        userController.findById(id);
+        //userController.findById(id);
 
+        System.out.println("name:");
+        String name=in.next();
+        System.out.println("age:");
+        int age=in.nextInt();
 
-
+        User user=new User(id,name,age);
+        userController.insert(user);
     }
 }

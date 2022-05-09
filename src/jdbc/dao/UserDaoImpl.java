@@ -44,8 +44,16 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public int insert(User user) {
-        return 0;
+    public int insert(User user) throws SQLException {
+        int result=0;
+        Connection conn = DriverManager.getConnection("jdbc:mysql://sh-cynosdbmysql-grp-10kn1b4i.sql.tencentcdb.com:27594/test", "cyh", "Cyh_990723");
+        Statement stat = conn.createStatement();
+        String sql="insert into user values ('"+user.getId()+"','"+user.getName()+"','"+user.getAge()+"')";
+        result= stat.executeUpdate(sql);
+
+        conn.close();
+        stat.close();
+        return result;
     }
 
     @Override

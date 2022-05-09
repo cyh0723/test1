@@ -10,7 +10,7 @@ public interface UserDao {
 
     User findById(Integer id) throws SQLException;
 
-    int insert(User user);
+    int insert(User user) throws SQLException;
 
     int update(User user);
 

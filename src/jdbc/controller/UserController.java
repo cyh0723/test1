@@ -23,4 +23,10 @@ public class UserController {
         System.out.println(userService.findById(id));
 
     }
+
+    public void insert(User user) throws SQLException {
+        userService.insert(user);
+        System.out.println("yes");
+
+    }
 }
