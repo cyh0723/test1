@@ -1,5 +1,6 @@
 package jdbc.dao;
 
+import jdbc.Utils.JDBCUtils;
 import jdbc.entity.User;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ public class UserDaoImpl implements UserDao{
     public List<User> users = new ArrayList<>();
     @Override
     public List<User> findAll() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://sh-cynosdbmysql-grp-10kn1b4i.sql.tencentcdb.com:27594/test", "cyh", "Cyh_990723");
+        Connection conn = JDBCUtils.getConnection();
         Statement stat = conn.createStatement();
         String sql="SELECT * from `user`";
         ResultSet rs = stat.executeQuery(sql);
@@ -27,7 +28,7 @@ public class UserDaoImpl implements UserDao{
     @Override
     public User findById(Integer id) throws SQLException {
         User user=new User();
-        Connection conn = DriverManager.getConnection("jdbc:mysql://sh-cynosdbmysql-grp-10kn1b4i.sql.tencentcdb.com:27594/test", "cyh", "Cyh_990723");
+        Connection conn = JDBCUtils.getConnection();
         Statement stat = conn.createStatement();
         String sql="SELECT * from `user` where id ='"+id+"'";
         ResultSet rs = stat.executeQuery(sql);
